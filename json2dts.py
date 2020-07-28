@@ -82,6 +82,11 @@ dts += """
 		device_type = "memory";
 		reg = <0x{main_ram_base:x} 0x{main_ram_size:x}>;
 	}};
+""".format(main_ram_base=d["memories"]["main_ram"]["base"],
+		   main_ram_size=d["memories"]["main_ram"]["size"])
+
+if "emulator" in d["memories"]:
+    dts += """
 
 	reserved-memory {{
 		#address-cells = <1>;
@@ -92,10 +97,7 @@ dts += """
 			reg = <0x{emulator_base:x} 0x{emulator_size:x}>;
 		}};
 	}};
-
-""".format(main_ram_base=d["memories"]["main_ram"]["base"],
-		   main_ram_size=d["memories"]["main_ram"]["size"],
-		   emulator_base=d["memories"]["emulator"]["base"],
+""".format(emulator_base=d["memories"]["emulator"]["base"],
 		   emulator_size=d["memories"]["emulator"]["size"])
 
 # SoC ----------------------------------------------------------------------------------------------
