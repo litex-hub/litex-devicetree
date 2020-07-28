@@ -237,6 +237,8 @@ if "spiflash" in d["csr_bases"]:
 
 	dts += """
 		litespiflash: spiflash@{spiflash_csr_base:x} {{
+                    	#address-cells = <1>;
+                    	#size-cells    = <1>;
 			compatible = "litex,spiflash";
 			reg = <0x{spiflash_csr_base:x} 0x100>;
 			flash: flash@0 {{
